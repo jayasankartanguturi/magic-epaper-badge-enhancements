@@ -2,169 +2,273 @@
 
 ## Project Title
 
-Improving the Magic ePaper Badge App into a User-Friendly Functional Application
+Improving the Magic ePaper Badge App into a User-Friendly and Feature-Rich Application
 
 ## Organization
 
 FOSSASIA
 
-## Abstract
+## Applicant
 
-The Magic ePaper Badge is a portable e-ink display device used for dynamic content such as names, messages, and branding. However, the current application suffers from usability issues, limited customization, and unreliable Bluetooth connectivity.
-
-This project aims to redesign and enhance the application into a user-friendly, feature-rich system with improved UI/UX, stable device communication, and advanced customization capabilities such as templates and live preview.
+Jayasankar Tanguturi
 
 ---
 
-## Problem Statement
+# 1. Abstract
 
-The current application has several limitations:
+The Magic ePaper Badge is an innovative low-power display device used in conferences, hackathons, and personal identification. While the hardware is efficient and useful, the current application lacks usability, customization, and reliable connectivity.
 
-* Complex and unintuitive user interface
-* Difficult Bluetooth pairing process
-* No real-time preview before sending data
-* Limited support for text and image customization
+This project aims to redesign the application into a modern, intuitive, and highly functional platform. The focus will be on improving UI/UX, stabilizing Bluetooth communication, and adding advanced features like live preview and reusable templates.
+
+The goal is to make the application accessible even for beginners while maintaining flexibility for advanced users.
+
+---
+
+# 2. Problem Statement
+
+Through analysis of the existing system, the following key issues were identified:
+
+* The user interface is confusing and not beginner-friendly
+* Bluetooth connection is unreliable and lacks feedback
+* No preview before sending content to device
+* Limited customization options
 * No reusable templates
-* Poor onboarding experience for new users
+* Poor onboarding experience
+
+These issues reduce usability and limit adoption.
 
 ---
 
-## Objectives
+# 3. Objectives
 
-* Simplify user workflow (reduce steps from 5+ to 2–3)
-* Improve Bluetooth connection reliability
-* Implement live preview functionality
-* Develop reusable template system
-* Enhance UI/UX for better accessibility
-* Enable saving and loading of badge designs
+The main objectives of this project are:
 
----
-
-## Proposed Solution
-
-The solution involves redesigning the application with a modern architecture:
-
-* Clean and responsive frontend UI
-* Bluetooth communication module with retry logic
-* Interactive badge editor (text + image support)
-* Live preview rendering system
-* Template library for quick usage
+* Simplify user interaction (reduce steps significantly)
+* Improve Bluetooth connection success rate
+* Provide real-time preview before sending data
+* Enable template-based badge design
+* Improve overall UI/UX and accessibility
 
 ---
 
-## System Architecture
+# 4. Proposed Solution
 
-Frontend (HTML/CSS/JS / React)
-→ Application Logic
-→ Bluetooth Communication Layer
-→ Magic ePaper Badge Device
+The proposed solution focuses on building a modular and scalable system:
+
+* Clean and responsive UI
+* Robust Bluetooth communication system
+* Interactive badge editor
+* Real-time preview engine
+* Template management system
 
 ---
 
-## Features
+# 5. System Architecture
 
-### Core Features
+## 🔷 High-Level Architecture
 
-* Easy device connection
+```
++----------------------+
+|     Frontend UI      |
+| (HTML, CSS, JS/React)|
++----------------------+
+           ↓
++----------------------+
+| Application Logic    |
+| (State + Processing) |
++----------------------+
+           ↓
++----------------------+
+| Bluetooth Layer      |
+| (Web Bluetooth API)  |
++----------------------+
+           ↓
++----------------------+
+| ePaper Badge Device  |
++----------------------+
+```
+
+---
+
+## 🔷 Detailed Architecture
+
+```
+Frontend
+ ├── UI Components
+ ├── Editor Module
+ ├── Preview Panel
+ └── State Management
+
+Logic Layer
+ ├── Template Engine
+ ├── Image Processor
+ └── Data Formatter
+
+Communication Layer
+ ├── Device Discovery
+ ├── Connection Manager
+ └── Data Transfer Module
+```
+
+---
+
+# 6. Data Flow Diagram
+
+```
+User Input
+   ↓
+UI Editor
+   ↓
+Preview Engine
+   ↓
+Bluetooth Module
+   ↓
+Device Display
+```
+
+---
+
+# 7. Key Features
+
+## Core Features
+
+* Easy Bluetooth connection
 * Real-time preview
 * Text and image editing
 
-### Advanced Features
+## Advanced Features
 
 * Template system
-* Save/load designs
+* Save and load designs
 * Improved UI themes
 
 ---
 
-## Implementation Plan
+# 8. Sample Code (Bluetooth Connection)
 
-### Community Bonding
+```javascript
+async function connectBadge() {
+  try {
+    const device = await navigator.bluetooth.requestDevice({
+      filters: [{ namePrefix: "EPD" }]
+    });
 
-* Understand codebase
-* Set up development environment
-* Discuss features with mentors
-
-### Phase 1: UI/UX Redesign
-
-* Create wireframes
-* Implement new UI
-
-### Phase 2: Bluetooth Improvements
-
-* Optimize connection process
-* Add retry and error handling
-
-### Phase 3: Preview System
-
-* Implement real-time rendering
-* Sync preview with device
-
-### Phase 4: Advanced Features
-
-* Templates
-* Save/load functionality
-
-### Phase 5: Testing & Documentation
-
-* Fix bugs
-* Write documentation
+    const server = await device.gatt.connect();
+    console.log("Connected to badge!");
+  } catch (error) {
+    console.error("Connection failed:", error);
+  }
+}
+```
 
 ---
 
-## Timeline
+# 9. Preview System Concept (Code Idea)
 
-* Week 1–2: Research & planning
+```javascript
+function updatePreview(text) {
+  const previewBox = document.getElementById("preview");
+  previewBox.innerText = text;
+}
+```
+
+---
+
+# 10. Implementation Plan
+
+## Community Bonding
+
+* Understand codebase
+* Discuss with mentors
+* Setup environment
+
+## Phase 1: UI/UX Redesign
+
+* Design wireframes
+* Implement responsive UI
+
+## Phase 2: Bluetooth Module
+
+* Improve connection logic
+* Add retry mechanism
+
+## Phase 3: Preview System
+
+* Implement live preview
+* Sync UI with device
+
+## Phase 4: Templates
+
+* Create reusable templates
+* Add save/load functionality
+
+## Phase 5: Testing
+
+* Bug fixing
+* Performance improvements
+
+---
+
+# 11. Timeline
+
+* Week 1–2: Research
 * Week 3–4: UI development
-* Week 5–6: Bluetooth module
+* Week 5–6: Bluetooth improvements
 * Week 7–8: Preview system
 * Week 9–10: Templates
 * Week 11–12: Testing
 
 ---
 
-## Deliverables
+# 12. Expected Outcomes
 
-* Redesigned UI
-* Stable Bluetooth communication
-* Live preview system
-* Template functionality
-* Complete documentation
-
----
-
-## Contribution Plan
-
-Before GSoC:
-
-* Fix UI issues in FOSSASIA repositories
-* Improve README/documentation
-* Submit at least 2–3 pull requests
-
-During GSoC:
-
-* Weekly PR submissions
-* Active communication with mentors
-* Continuous improvements based on feedback
+* Improved user experience
+* Stable device connectivity
+* Flexible customization system
+* Increased adoption
 
 ---
 
-## Why Me
+# 13. Performance Metrics
 
-I have strong skills in HTML, CSS, JavaScript, C, C++, and Java, along with UI/UX design experience. I am passionate about building user-friendly applications and contributing to open source.
-
-I am committed to learning, contributing consistently, and delivering a high-quality project.
+* 40% reduction in connection failures
+* 50% faster task completion
+* Improved usability
 
 ---
 
-## Future Scope
+# 14. Contribution Plan
 
-* Mobile application version
+## Before GSoC
+
+* Submit 2–3 pull requests
+* Fix UI issues
+* Improve documentation
+
+## During GSoC
+
+* Weekly contributions
+* Regular mentor communication
+* Continuous improvement
+
+---
+
+# 15. Why Me
+
+I have experience in HTML, CSS, JavaScript, C, C++, and Java, along with a strong interest in UI/UX design. I have already started working on this project by building a GitHub repository with UI design, proposal, and initial implementation.
+
+I am committed to learning, contributing consistently, and delivering high-quality results.
+
+---
+
+# 16. Future Scope
+
+* Mobile app version
 * Cloud synchronization
 * Multi-device support
 
 ---
 
-## Conclusion
+# 17. Conclusion
 
-This project will significantly improve the usability and functionality of the Magic ePaper Badge application, making it more accessible, reliable, and efficient for users worldwide.
+This project will transform the Magic ePaper Badge application into a modern, user-friendly, and efficient system. It will improve usability, enhance functionality, and provide long-term value to the FOSSASIA community.
