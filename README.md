@@ -1,2 +1,4 @@
-# magic-epaper-badge-enhancements
-Improving Magic ePaper Badge App with better UI/UX, Bluetooth connectivity, and preview system.
+# Magic ePaper Badge Enhancements
+
+## 📄 GSoC Proposal
+[View Proposal](docs/proposal.md)
