@@ -1,4 +1,7 @@
-# Magic ePaper Badge Enhancements
+## 🎨 UI Preview
 
-## 📄 GSoC Proposal
-[View Proposal](docs/proposal.md)
+### Home Screen
+![Home](assets/images/home.jpg)
+
+### Editor Screen
+![Editor](assets/images/editor.jpg)
